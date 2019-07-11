@@ -1,0 +1,367 @@
+@import './theme.less';
+/* @theme-font-family */
+
+/*	
+ *	颜色
+ *	标准字体颜色
+ *	成功颜色
+ *	错误颜色
+ *	警告颜色
+*/
+
+@color: #000;
+@succeedColor: #00ff00;
+@errorColor: #ff0000;
+@warnColor: #F00;
+@border: 1px solid rgba(235, 235, 235, 1);
+/*	
+ *	背景
+ *	颜色
+*/
+
+@background: #fff;
+/*	
+ *	字体大小
+ *	统一字体
+ *	标题字体大小
+ *	普通字体大小
+ *	菜单字体大小
+*/
+
+@fontFamily: PingFang SC;
+@titleFontSize: 20px;
+@plainFontSize: 14px;
+@menuFontSzie: 18px;
+/*	
+ *	标签初始化
+ *	
+*/
+
+* {
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  width: 100%; // position: fixed;
+  // top: 0;
+  // left: 0;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+em {
+  font-style: inherit;
+}
+
+body {
+  font-family: @fontFamily;
+  font-size: @plainFontSize;
+  color: rgba(136, 136, 136, 1);
+}
+
+.Ititle(@titleBackground: rgba(255, 255, 255, 1), @color: rgba(0, 0, 0, 1)) {
+  font-size: @titleFontSize;
+  font-family: @fontFamily;
+  font-weight: 600;
+  color: @color;
+  background: @titleBackground;
+}
+
+a,
+input,
+textarea {
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+}
+
+.boxshow() {
+  box-shadow: 0 0 1rem .1rem rgba(159, 159, 159, 0.16);
+  border-radius: .5rem;
+  overflow: hidden;
+  /* box-shadow:0rem 0rem 1rem rgba(0,0,0,0.16); */
+}
+
+.bg-img(@url) {
+  background-image:url('./assets/@{url}.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  /* @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2){
+		background-image:url('./assets/@{url}@2x.png');
+	} */
+}
+
+.mrge {
+  width: 2rem;
+  height: .5rem;
+  .bg-img('icon-mrge');
+}
+
+.icon {
+  vertical-align: -5px;
+  margin-right: 3px;
+}
+
+.succeed {
+  color: @succeedColor;
+  fill: @succeedColor;
+}
+
+.error {
+  color: @errorColor;
+  fill: @errorColor;
+}
+
+.warn {
+  color: @warnColor;
+  color: @warnColor;
+}
+
+.icon-succeed {
+  fill: @succeedColor;
+  color: @succeedColor;
+}
+
+.icon-error {
+  fill: @errorColor;
+}
+
+.icon-warn {
+  fill: @warnColor;
+}
+
+.weui-btn {
+  cursor: pointer;
+}
+
+input[type="text"] {
+  font-size: 1rem;
+}
+
+/* 
+  *修改 vux-ui 默认样式
+  */
+
+.vux-toast {
+  .vux-toast-middle {
+    width: 80%!important;
+  }
+}
+
+.vux-popup-dialog {
+  border-radius: 12px 12px 0 0;
+}
+
+.weui-dialog {
+  box-sizing: border-box;
+  text-align: left;
+  padding: .3rem 1rem 1.2rem;
+}
+
+.weui-dialog__hd,
+.weui-dialog__bd {
+  padding: 0;
+}
+
+.weui-dialog__hd {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+}
+
+.weui-dialog__bd {
+  font-size: .9rem;
+  color: rgba(102, 102, 102, 1);
+  margin: 1rem 0;
+}
+
+.weui-dialog__ft {
+  border: 0;
+  position: initial;
+  height: auto;
+  line-height: normal;
+  display: flex;
+  justify-content: space-between;
+}
+
+.weui-dialog__btn {
+  border: 0;
+  font-size: 1rem;
+  position: initial;
+  height: auto;
+  flex: inherit;
+}
+
+.weui-dialog__btn_default {
+  color: rgba(153, 153, 153, 1);
+}
+
+.weui-dialog__btn_primary {
+  color: @theme-color;
+}
+
+.weui-tabbar {
+  background: @background;
+  box-shadow: 0rem 0rem 1rem rgba(153, 153, 153, 0.16);
+}
+
+.weui-tabbar::before {
+  border-top: 0px solid transparent;
+}
+
+.vux-header {
+  position: fixed!important;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  border-bottom: 1px solid #bbbbbb;
+  .vux-header-left {
+    .vux-header-back {
+      font-size: @menuFontSzie;
+      font-weight: 600;
+    }
+    .left-arrow {
+      &:before {
+        border-width: 2px 0 0 2px!important;
+      }
+    }
+  }
+}
+
+//头部公共样式
+header {
+  height: 3.14rem;
+  width: 100%;
+  border-bottom: 1px solid #bbbbbb;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #fff;
+  z-index: 100;
+  a {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    svg {
+      position: absolute;
+      left: 0.6rem;
+      top: 0.7rem;
+    }
+    p {
+      display: inline-block;
+      font-size: @menuFontSzie;
+      font-weight: 600;
+      min-width: 4.85rem;
+      margin-left: 2.5rem;
+      line-height: 3.14rem;
+      font-family: @fontFamily;
+      color: #000000;
+    }
+  }
+}
+
+//button去除默认样式
+button {
+  margin: 0;
+  padding: 0;
+  border: 1px solid transparent; //自定义边框
+  outline: none; //消除默认点击蓝色边框效果
+}
+
+//底部居中按钮样式
+.footer {
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5.14rem;
+  .nextStep {
+    width: 85%;
+    margin: 1rem 2rem;
+    height: 3rem;
+    display: inline-block;
+    background-color: #0562be;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    text-align: center;
+    line-height: 3rem;
+    color: #fff;
+  }
+}
+
+//底部居中按钮样式2
+.footer2 {
+  background: #fff;
+  width: 100%;
+  height: 3.14rem;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  .nextStep {
+    width: 85%;
+    margin: 0 2rem;
+    height: 3rem;
+    display: inline-block;
+    background-color: #0562be;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    text-align: center;
+    line-height: 3rem;
+    color: #fff;
+  }
+}
+
+//弹出框提交按钮样式
+.comiuts {
+  width: 85%;
+  margin: 2rem 2rem;
+  height: 3rem;
+  display: inline-block;
+  background-color: #0562be;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 3rem;
+  color: #fff;
+}
+
+//选项前select a标签样式
+.items {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  .bg-img("noselcets");
+}
+
+.items-selected {
+  width: 30px;
+  display: inline-block;
+  height: 30px;
+  border-color: #0a65bf;
+  .bg-img("selcets");
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  background-size: contain;
+  border: 1px solid #fff;
+}
+
+.bg-topborder {
+  border-top: 10px solid #eee!important;
+  margin: 0 !important;
+  padding: 0 1.48rem !important;
+  margin-bottom: 10px!important;
+}
